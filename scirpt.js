@@ -1,3 +1,36 @@
+const Pedra = document.getElementById("Pedra");
+const Papel = document.getElementById("Papel");
+const Tesoura = document.getElementById("Tesoura");
+const Result = document.getElementById("Result")
+
+
+Pedra.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = Pedra.innerText;
+    playRound(playerSelection, computerSelection);
+    console.log("Jogador:", playerSelection);
+    console.log("Computador:", computerSelection);
+    Result=document.writeln(`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+});
+Papel.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = Papel.innerText;
+    playRound(playerSelection, computerSelection);
+    console.log("Jogador:", playerSelection);
+    console.log("Computador:", computerSelection);
+    Result=document.writeln(`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+});
+
+Tesoura.addEventListener("click", () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = Tesoura.innerText;
+    playRound(playerSelection, computerSelection);
+    console.log("Jogador:", playerSelection);
+    console.log("Computador:", computerSelection);
+    Result=document.writeln(`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+});
+
+
 // seleção aleatório de (pedra papel ou tesoura)
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 100);
@@ -9,7 +42,6 @@ function getComputerChoice() {
         return "Papel";
     }
 }
-// Jogo comparação de escolhas do Usuário
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -30,22 +62,12 @@ function playRound(playerSelection, computerSelection) {
         return `${playerSelection} Perde para ${computerSelection}`;
     }
 }
-//contagem de rodadas e Resultado
-function game() {
-    let count = 0; // Inicializa a contagem
-    while (count < 4) {
-        const playerSelection = prompt("Digre Pedra Papel ou Tesoura");
-        const computerSelection = getComputerChoice();
-        console.log("Jogador:", playerSelection);
-        console.log("Computador:", computerSelection);
-        console.log(playRound(playerSelection, computerSelection, count));
-        count++;
-    }
-}
 
-const playerSelection = prompt("Digre Pedra Papel ou Tesoura");
-const computerSelection = getComputerChoice();
-console.log("Jogador:", playerSelection);
-console.log("Computador:", computerSelection);
-console.log(playRound(playerSelection, computerSelection));
-console.log(game());
+
+
+
+
+
+
+
+
