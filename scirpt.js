@@ -3,33 +3,42 @@ const Papel = document.getElementById("Papel");
 const Tesoura = document.getElementById("Tesoura");
 const Result = document.getElementById("Result")
 
-
+let partidas = 0;
 Pedra.addEventListener("click", () => {
+    partidas++;
     const computerSelection = getComputerChoice();
     const playerSelection = Pedra.innerText;
     playRound(playerSelection, computerSelection);
-    console.log("Jogador:", playerSelection);
-    console.log("Computador:", computerSelection);
-    Result=document.writeln(`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+    Result.innerHTML = (`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+    console.log(partidas)
+    if (partidas == 5) {
+        console.log(partidas)
+        alert("cabo")
+    }
 });
 Papel.addEventListener("click", () => {
+    partidas++;
     const computerSelection = getComputerChoice();
     const playerSelection = Papel.innerText;
     playRound(playerSelection, computerSelection);
-    console.log("Jogador:", playerSelection);
-    console.log("Computador:", computerSelection);
-    Result=document.writeln(`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+    Result.innerHTML = (`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+    console.log(partidas)
+    if (partidas == 5) {
+        console.log(partidas)
+        alert("cabo")
+    }
 });
-
 Tesoura.addEventListener("click", () => {
+    partidas++;
     const computerSelection = getComputerChoice();
     const playerSelection = Tesoura.innerText;
     playRound(playerSelection, computerSelection);
-    console.log("Jogador:", playerSelection);
-    console.log("Computador:", computerSelection);
-    Result=document.writeln(`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+    Result.innerHTML = (`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
+    if (partidas == 5) {
+        console.log(partidas)
+        alert("cabo")
+    }
 });
-
 
 // seleção aleatório de (pedra papel ou tesoura)
 function getComputerChoice() {
@@ -51,7 +60,6 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "Pedra" && computerSelection === "Tesoura") ||
         (playerSelection === "Tesoura" && computerSelection === "Papel")
     ) {
-
         return `${playerSelection} Ganha de ${computerSelection}`;
     } else if (
         (computerSelection === "Papel" && playerSelection === "Pedra") ||
@@ -62,6 +70,10 @@ function playRound(playerSelection, computerSelection) {
         return `${playerSelection} Perde para ${computerSelection}`;
     }
 }
+// alert("cabo")
+
+
+
 
 
 
