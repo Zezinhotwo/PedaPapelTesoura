@@ -1,44 +1,31 @@
-const Pedra = document.getElementById("Pedra");
-const Papel = document.getElementById("Papel");
-const Tesoura = document.getElementById("Tesoura");
+const escolhas = document.querySelectorAll("#opcao");
+const pp = document.querySelectorAll("button")
 const Result = document.getElementById("Result")
 
-let partidas = 0;
-Pedra.addEventListener("click", () => {
-    partidas++;
-    const computerSelection = getComputerChoice();
-    const playerSelection = Pedra.innerText;
-    playRound(playerSelection, computerSelection);
-    Result.innerHTML = (`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
-    console.log(partidas)
-    if (partidas == 5) {
-        console.log(partidas)
-        alert("cabo")
-    }
+const partidas = 5;
+let game = 1;
+
+// "forEach" > vai percorrer o conteudo de "escolhas"
+//e cada valor que for adicionado sera colocado em "button"
+// Depois podera ser manipulado de acordo com o programador
+escolhas.forEach(button => {
+
+    button.addEventListener("click", () => {
+        if (game <= partidas) {
+
+            console.log(game);
+            const computerSelection = getComputerChoice();
+            const escolha = button.innerText;
+            Result.innerHTML = (`Você jogou <Strong>${escolha}</Strong> contra <Strong>${computerSelection}</Strong>`)
+            playRound(escolha, computerSelection)
+            game++;
+        }
+        if(partidas < game){
+           alert("Perdeu Mané")
+        }
+    });
 });
-Papel.addEventListener("click", () => {
-    partidas++;
-    const computerSelection = getComputerChoice();
-    const playerSelection = Papel.innerText;
-    playRound(playerSelection, computerSelection);
-    Result.innerHTML = (`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
-    console.log(partidas)
-    if (partidas == 5) {
-        console.log(partidas)
-        alert("cabo")
-    }
-});
-Tesoura.addEventListener("click", () => {
-    partidas++;
-    const computerSelection = getComputerChoice();
-    const playerSelection = Tesoura.innerText;
-    playRound(playerSelection, computerSelection);
-    Result.innerHTML = (`Você jogou <Strong>${playerSelection}</Strong> contra <Strong>${computerSelection}</Strong>`)
-    if (partidas == 5) {
-        console.log(partidas)
-        alert("cabo")
-    }
-});
+
 
 // seleção aleatório de (pedra papel ou tesoura)
 function getComputerChoice() {
@@ -52,22 +39,23 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
+function playRound(escolha, computerSelection) {
+    if (escolha === computerSelection) {
         return "Empate";
     } else if (
-        (playerSelection === "Papel" && computerSelection === "Pedra") ||
-        (playerSelection === "Pedra" && computerSelection === "Tesoura") ||
-        (playerSelection === "Tesoura" && computerSelection === "Papel")
-    ) {
-        return `${playerSelection} Ganha de ${computerSelection}`;
-    } else if (
-        (computerSelection === "Papel" && playerSelection === "Pedra") ||
-        (computerSelection === "Pedra" && playerSelection === "Tesoura") ||
-        (computerSelection === "Tesoura" && computerSelection === "Papel")
+        (escolha === "Papel" && computerSelection === "Pedra") ||
+        (escolha === "Pedra" && computerSelection === "Tesoura") ||
+        (escolha === "Tesoura" && computerSelection === "Papel")
     ) {
 
-        return `${playerSelection} Perde para ${computerSelection}`;
+        return `${escolha} Ganha de ${computerSelection} `;
+    } else if (
+        (computerSelection === "Papel" && escolha === "Pedra") ||
+        (computerSelection === "Pedra" && escolha === "Tesoura") ||
+        (computerSelection === "Tesoura" && escolha === "Papel")
+    ) {
+
+        return `${escolha} Perde para ${computerSelection}`;
     }
 }
 // alert("cabo")
