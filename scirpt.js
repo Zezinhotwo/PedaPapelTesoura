@@ -1,9 +1,14 @@
 const escolhas = document.querySelectorAll("#opcao");
-const pp = document.querySelectorAll("button")
 const Result = document.getElementById("Result")
+const pontosP = document.getElementById("pontosP")
+const pontosC = document.getElementById("pontosC")
 
 const partidas = 5;
-let game = 1;
+let game = 0;
+let scorePlay = 0;
+let scoreComp = 0;
+
+
 
 // "forEach" > vai percorrer o conteudo de "escolhas"
 //e cada valor que for adicionado sera colocado em "button"
@@ -11,18 +16,31 @@ let game = 1;
 escolhas.forEach(button => {
 
     button.addEventListener("click", () => {
-        if (game <= partidas) {
-
+        if (partidas > game) {
             console.log(game);
             const computerSelection = getComputerChoice();
             const escolha = button.innerText;
-            Result.innerHTML = (`Você jogou <Strong>${escolha}</Strong> contra <Strong>${computerSelection}</Strong>`)
-            playRound(escolha, computerSelection)
+            Result.innerHTML = playRound(escolha, computerSelection)
+            // (`Você jogou <Strong>${escolha}</Strong> contra <Strong>${computerSelection}</Strong>`)
+
             game++;
         }
-        if(partidas < game){
-           alert("Perdeu Mané")
+        if (game >= partidas) {
+            if (scoreComp == scorePlay) {
+                alert("Emapte!!")
+            } else if (scoreComp >= scorePlay) {
+                alert("TU PERDEU!!!")
+            } else if (scorePlay >= scoreComp) {
+                alert("TU GANHOU!!!")
+            }
         }
+        pontosP.innerText = scorePlay
+        pontosC.innerText = scoreComp
+
+
+
+        //console.log("pontuacao TU" + scorePlay);
+        //console.log("pontuacao Comp" + scoreComp)
     });
 });
 
@@ -39,26 +57,26 @@ function getComputerChoice() {
     }
 }
 
-function playRound(escolha, computerSelection) {
+function playRound(escolha, computerSelection,) {
     if (escolha === computerSelection) {
-        return "Empate";
+        return `<Strong>${escolha}</Strong> Contra <Strong>${computerSelection}</Strong> = Empate`;
     } else if (
         (escolha === "Papel" && computerSelection === "Pedra") ||
         (escolha === "Pedra" && computerSelection === "Tesoura") ||
         (escolha === "Tesoura" && computerSelection === "Papel")
     ) {
+        scorePlay++
+        return `<Strong>${escolha}</Strong>  Ganha de <Strong>${computerSelection}</Strong>`;
 
-        return `${escolha} Ganha de ${computerSelection} `;
     } else if (
         (computerSelection === "Papel" && escolha === "Pedra") ||
         (computerSelection === "Pedra" && escolha === "Tesoura") ||
         (computerSelection === "Tesoura" && escolha === "Papel")
     ) {
-
-        return `${escolha} Perde para ${computerSelection}`;
+        scoreComp++
+        return `<Strong>${escolha}</Strong> Perde para <Strong>${computerSelection}</Strong> `;
     }
 }
-// alert("cabo")
 
 
 
