@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Jokeipow</title>
 </head>
-<body> 
-    <div id="Result"></div>
-    <button id="opcao">Pedra</button>
-    <button id="opcao">Papel</button>
-    <button id="opcao" id="pp">Tesoura</button>
 
-
+<body>
+    <div class="content">
+        <div class="caixa">
+            <div class="result">
+                <div id="Result"></div>
+            </div>
+            <div class="selecao">
+                <div id="pontosP"></div>
+                <button id="opcao">Pedra</button>
+                <button id="opcao">Papel</button>
+                <button id="opcao">Tesoura</button>
+                <div id="pontosC"></div>
+            </div>
+        </div>
+    </div>
     <script src="scirpt.js"></script>
 </body>
+
 </html>
