@@ -7,7 +7,7 @@
 }
 
 .content {
-    background-color: rgb(219, 206, 206);
+    background-color: rgb(34, 30, 30);
     height: 100vh;
     width: 100%;
 
@@ -19,11 +19,11 @@
 }
 
 .caixa {
-    background-color: rgb(212, 69, 69);
+    background-color: rgb(75, 107, 196);
     height: 60%;
     width: 30%;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px 2px black;
+    box-shadow: 0px 0px 10px 2px rgb(255, 255, 255);
     
     display: flex;
     justify-content: space-around;
@@ -32,7 +32,7 @@
     
 }
 #pontosP ,#pontosC {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(206, 197, 197);
     height: 90px;
     width: 90px;
     border-radius: 10px;
@@ -56,7 +56,7 @@ button{
     flex-direction: row ;
    
 }.result{
-    background-color: white;
+    background-color: rgb(194, 190, 190);
     text-align: center;
     padding: 20px;
 }
